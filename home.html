@@ -1,0 +1,27 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION["username"])) {
+    // If not logged in, redirect to the login page
+    header("Location: login_or_register.php");
+    exit();
+}
+
+// If logged in, display the welcome message
+$username = $_SESSION["username"];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome, <?php echo $username; ?></h1>
+    <p>This is a protected page. Only registered users can access it.</p>
+    <a href="log.php">Logout</a>
+</body>
+</html>
